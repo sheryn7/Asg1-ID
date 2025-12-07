@@ -102,7 +102,7 @@ storeItems.forEach(item => {
   });
 });
 
-// ===== BUILD YOUR OWN SET (BYO) LOGIC =====
+// ===== BYO LOGIC =====
 if (document.querySelector('.byo-section')) {
 
   // 1. Read set size from URL (?size=6 etc.)
@@ -201,7 +201,7 @@ if (document.querySelector('.byo-section')) {
       window.location.href = "cart.html";
     });
   }
-} // <<< IMPORTANT: closes BYO block
+}
 
 // ===== CART INTERACTIONS =====
 if (document.querySelector('.cart-section')) {
@@ -221,12 +221,12 @@ if (document.querySelector('.cart-section')) {
 
   const deliveryBtns   = document.querySelectorAll('.cart-delivery-btn');
 
-  // (Optional) Load BYO data for set name + cookies
+  // Load BYO data for set name + cookies
   const savedCart = localStorage.getItem('nastyCart');
 
   if (savedCart && cartItem) {
     const data = JSON.parse(savedCart);
-    const nameEl = document.getElementById('card-set-name'); // matches your HTML id
+    const nameEl = document.getElementById('card-set-name');
     const listEl = document.getElementById('cart-cookie-list');
 
     if (nameEl && data.setSize) {
@@ -250,8 +250,6 @@ if (document.querySelector('.cart-section')) {
   }
 
   const unitPrice      = cartItem ? parseFloat(cartItem.dataset.price || '0') : 0;
-  const FREE_THRESHOLD = 20;
-  const SHIPPING_FEE   = 5;
 
   function formatMoney(value) {
     return `$${value.toFixed(2)} SGD`;
@@ -272,11 +270,6 @@ if (document.querySelector('.cart-section')) {
     });
   }
 
-  function getActiveDelivery() {
-    return document.querySelector('.cart-delivery-btn.active');
-  }
-
-  // Recalculate line total + subtotal (with shipping)
   function updateTotals() {
     const qty = parseInt(qtyValueEl.textContent, 10) || 0;
 
@@ -286,22 +279,20 @@ if (document.querySelector('.cart-section')) {
     }
 
     const productTotal = unitPrice * qty;
-    let shipping = 0;
 
-    const activeDelivery = getActiveDelivery();
-    if (activeDelivery && activeDelivery.textContent.includes('Nationwide')) {
-      if (productTotal < FREE_THRESHOLD) {
-        shipping = SHIPPING_FEE;
-      }
-    }
-
-    // show productTotal on the right column
     if (lineTotalEl) lineTotalEl.textContent = formatMoney(productTotal);
 
-    // subtotal includes shipping
-    const grandTotal = productTotal + shipping;
-    if (subtotalEl) subtotalEl.textContent = formatMoney(grandTotal);
-  }
+    if (subtotalEl) subtotalEl.textContent = formatMoney(productTotal);
+
+    localStorage.setItem(
+    "nastyCheckoutTotals",
+    JSON.stringify({
+      qty: qty,
+      unitPrice: unitPrice,
+      subtotal: productTotal
+    })  
+  );   
+}
 
   // ---- Quantity buttons ----
   if (qtyControls && qtyValueEl) {
@@ -354,4 +345,125 @@ if (document.querySelector('.cart-section')) {
 
   // Initial calculation on page load
   updateTotals();
+}
+
+// ===== CHECKOUT PAGE LOGIC =====
+if (document.querySelector('.checkout-summary')) {
+
+  const FREE_THRESHOLD = 20;
+  const SHIPPING_FEE   = 5;
+
+  const totalsRaw = localStorage.getItem("nastyCheckoutTotals");
+  const cartRaw   = localStorage.getItem("nastyCart");
+
+  // If there's no data (e.g. user came straight here), don't crash
+  if (!totalsRaw || !cartRaw) {
+    console.warn("Missing checkout/localStorage data");
+  } 
+  
+  else {
+    const totals = JSON.parse(totalsRaw);  // { qty, unitPrice, subtotal }
+    const cart   = JSON.parse(cartRaw);    // { setSize, cookies: [...] }
+
+    const qty      = totals.qty || 1;
+    const subtotal = totals.subtotal || 0;
+
+    // ---- Elements in the summary ----
+    const qtyBadgeEl   = document.querySelector(".summary-qty-badge");
+    const setNameEl    = document.getElementById("summary-set-name");
+    const cookieDescEl = document.getElementById("summary-cookie-desc");
+    const priceEl      = document.getElementById("summary-set-price");
+    const subtotalEl   = document.getElementById("checkout-subtotal");
+    const shippingEl   = document.getElementById("checkout-shipping");
+    const totalEl      = document.getElementById("checkout-total");
+
+    const shippingPriceBadge = document.querySelector(".shipping-price");
+
+    // ---- Fill in box name + cookie list ----
+    if (setNameEl && cart.setSize) {
+      setNameEl.textContent = `Box of ${cart.setSize}`;
+    }
+
+    if (cookieDescEl && Array.isArray(cart.cookies)) {
+      cookieDescEl.textContent = cart.cookies
+        .map(item => item.qty > 1 ? `${item.name} x${item.qty}` : item.name)
+        .join(", ");
+    }
+
+    // ---- Quantity badge + price for the set ----
+    if (qtyBadgeEl) qtyBadgeEl.textContent = qty;
+
+    const priceText = `$${subtotal.toFixed(2)} SGD`;
+    if (priceEl)    priceEl.textContent    = priceText;
+    if (subtotalEl) subtotalEl.textContent = priceText;
+
+    // ---- Shipping: Free if subtotal ≥ 20, else $5 ----
+    let shippingAmount;
+
+    if (subtotal >= FREE_THRESHOLD) {
+      shippingAmount = 0;
+      if (shippingEl)         shippingEl.textContent = "Free Shipping";
+      if (shippingPriceBadge) shippingPriceBadge.textContent = "Free Shipping";
+    } else {
+      shippingAmount = SHIPPING_FEE;
+      const shipText = `$${SHIPPING_FEE.toFixed(2)} SGD`;
+      if (shippingEl)         shippingEl.textContent = shipText;
+      if (shippingPriceBadge) shippingPriceBadge.textContent = `$${SHIPPING_FEE.toFixed(2)}`;
+    }
+
+    // ---- Grand total = subtotal + shipping ----
+    const grandTotal = subtotal + shippingAmount;
+    if (totalEl) {
+      totalEl.textContent = `SGD $${grandTotal.toFixed(2)}`;
+    }
+  }
+  // ===== CHECKOUT FORM VALIDATION & PAY NOW BUTTON =====
+if (document.querySelector('.checkout-page')) {
+
+  const payBtn = document.querySelector('.checkout-pay-btn');
+  const requiredFields = document.querySelectorAll('.checkout-main .checkout-input');
+
+  if (payBtn && requiredFields.length > 0) {
+
+    // Check if every input has some value
+    function allFieldsFilled() {
+      let filled = true;
+      requiredFields.forEach(field => {
+        if (field.value.trim() === '') {
+          filled = false;
+        }
+      });
+      return filled;
+    }
+
+    // Enable/disable button based on filled state
+    function updatePayButtonState() {
+      const canPay = allFieldsFilled();
+      payBtn.disabled = !canPay;
+      payBtn.classList.toggle('disabled', !canPay);
+    }
+
+    // Watch all inputs for changes
+    requiredFields.forEach(field => {
+      field.addEventListener('input', updatePayButtonState);
+    });
+
+    // Initial state on page load
+    updatePayButtonState();
+
+    // Handle click on Pay Now
+    payBtn.addEventListener('click', (e) => {
+      // In case someone forces click while disabled
+      if (!allFieldsFilled()) {
+        e.preventDefault();
+        alert('Please fill in all required information before proceeding.');
+        return;
+      }
+
+      alert('Thank You for Shopping With Us!');
+      window.location.href = 'index.html';
+    });
+  }
+}
+
 }

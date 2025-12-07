@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nasty Cookie</title>
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/png" href="images/NC_logo.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/0d44c5051b.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    </head>
+    <body>
+        <div class="carousel">
+            <div class="group">
+                <span>  ·  Free Delivery for Orders Above $20  ·  </span>
+                <span>  ·  Free Delivery for Orders Above $20  ·  </span>
+                <span>  ·  Free Delivery for Orders Above $20  ·  </span>
+                <span>  ·  Free Delivery for Orders Above $20  ·  </span>
+                <span>  ·  Free Delivery for Orders Above $20  ·  </span>
+                <span>  ·  Free Delivery for Orders Above $20  ·  </span>
+                <span>  ·  Free Delivery for Orders Above $20  ·  </span>
+            </div>
+        </div>
+        <nav>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu">
+                <i class="bi bi-list"></i>
+            </button>
+            <a id="logo" href="index.html" target="_blank">
+                <img src="images/NC_text_logo.png" alt="Nasty Cookie">
+            </a>
+
+            <ul class="nav-links">
+                <div class="mobile-menu-header">
+                    <button class="mobile-close" id="mobile-close">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+
+                <hr class="mobile-divider">
+
+                <li><a href="index.html" target="_blank">Home</a></li>
+                <li><a href="shop.html" target="_blank">Shop</a></li>
+                <li><a href="#" target="_blank">Events & Corporate Gifting</a></li>
+                <li><a href="#" target="_blank">FAQ</a></li>
+            </ul>
+            <div class="icon">
+                <i class="bi bi-search" id="search-toggle"></i>
+                <a href="signin.html" target="_blank" class="profile-link">
+                    <i class="bi bi-person"></i>
+                </a>
+                <a href="cart.html" class="bag-link">
+                    <i class="bi bi-bag"></i>
+                </a>
+            </div>
+        </nav>
+        <div class="search-bar" id="search-bar">
+            <div class="search-bar-inner">
+                <input type="text" placeholder="Search" />
+                <button class="search-btn">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+
+                <button class="search-close" id="search-close">✕</button>
+            </div>
+        <hr>
+        <main class="checkout-page">
+            <section class="checkout-main">
+                <div class="checkout-block">
+                    <h2 class="checkout-heading">Contact</h2>
+                    <label class="checkout-label">
+                        <span>Email</span>
+                        <input type="email" class="checkout-input" placeholder="Email">
+                    </label>
+
+                    <label class="checkbox-row">
+                        <input type="checkbox">
+                        <span>Email me with news and offers</span>
+                    </label>
+                </div>
+
+                <div class="checkout-block">
+                    <h2 class="checkout-heading">Delivery</h2>
+                    <label class="checkout-label">
+                        <span>Country/Region</span>
+                        <select class="checkout-input">
+                            <option>Singapore</option>
+                        </select>
+                    </label>
+
+                    <div class="checkout-row">
+                        <label class="checkout-label">
+                            <span>First Name</span>
+                            <input type="text" class="checkout-input">
+                        </label>
+
+                        <label class="checkout-label">
+                            <span>Last Name</span>
+                            <input type="text" class="checkout-input">
+                        </label>
+                    </div>
+
+                    <label class="checkout-label">
+                        <span>Address</span>
+                        <input type="text" class="checkout-input">
+                    </label>
+
+                    <label class="checkout-label">
+                        <span>Postal Code</span>
+                        <input type="text" class="checkout-input">
+                    </label>
+
+                    <label class="checkout-label">
+                        <span>Phone Number</span>
+                        <input type="tel" class="checkout-input">
+                    </label>
+                </div>
+
+                <div class="checkout-block">
+                    <h2 class="checkout-heading">Shipping Method</h2>
+                    <button class="shipping-option">
+                        <div class="shipping-text">
+                            <span class="shipping-title">Local Delivery</span>
+                            <span class="shipping-subtitle">Ships every Mon, Wed, Fri</span>
+                        </div>
+                        <span class="shipping-price">$5.00</span>
+                    </button>
+                </div>
+
+                <div class="checkout-block">
+                    <h2 class="checkout-heading">Payment</h2>
+                    <p class="checkout-subheading">Credit Card</p>
+                    <label class="checkout-label">
+                        <span>Card Number</span>
+                        <input type="text" class="checkout-input">
+                    </label>
+
+
+                    <div class="checkout-row">
+
+                        <label class="checkout-label">
+                            <span>Expiration Date (MM/YY)</span>
+                            <input type="text" class="checkout-input">
+                        </label>
+
+                        <label class="checkout-label">
+                            <span>Security Code</span>
+                            <input type="text" class="checkout-input">
+                        </label>
+                    </div>
+
+                    <label class="checkout-label">
+                        <span>Name on Card</span>
+                        <input type="text" class="checkout-input">
+                    </label>
+                </div>
+
+                <button class="checkout-pay-btn">Pay Now</button>
+            </section>
+
+            <aside class="checkout-summary">
+                <h2 class="checkout-heading">Order Summary</h2>
+
+                <div class="summary-item">
+
+                    <div class="summary-img-wrapper">
+                        <img src="images/cookieset.png" alt="Cookie Set" class="summary-img">
+                        <span class="summary-qty-badge">1</span>
+                    </div>
+                    <div class="summary-item-info">
+                        <p class="summary-item-name" id="summary-set-name">X SET</p>
+                        <p class="summary-item-desc" id="summary-cookie-desc">XXXXXXXXXXXXXXXXXXXX</p>
+                    </div>
+                    <p class="summary-item-price" id="summary-set-price">$XX.XX</p>
+                </div>
+
+
+                <div class="summary-discount-row">
+                    <input
+                    type="text"
+                    class="checkout-input"
+                    placeholder="Discount Code or Gift Card">
+
+                    <button class="discount-apply-btn">APPLY</button>
+                </div>
+
+                <div class="summary-totals">
+
+                    <div class="summary-line">
+                        <span>Subtotal</span>
+                        <span id="checkout-subtotal">$XX.XX</span>
+                    </div>
+
+                    <div class="summary-line">
+                        <span>Shipping</span>
+                        <span id="checkout-shipping">$XX.XX</span>
+                    </div>
+                    <div class="summary-line summary-total-line">
+                        <span>Total</span>
+                        <span class="summary-total-amount" id="checkout-total">SGD $XX.XX</span>
+                    </div>
+                </div>
+            </aside>
+            <hr class="checkout-divider-mobile">
+        </main>
+        <script src="script.js"></script>
+    </body>
+</html>
