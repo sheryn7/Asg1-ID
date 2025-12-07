@@ -42,7 +42,6 @@ if (navToggle && navLinks) {
     // lock/unlock body scroll under overlay
     document.body.classList.toggle('no-scroll', isOpen);
 
-    // change icon: hamburger ↔ X
     if (isOpen) {
       navToggleIcon.classList.remove('bi-list');
       navToggleIcon.classList.add('bi-x');
@@ -52,7 +51,7 @@ if (navToggle && navLinks) {
     }
   });
 
-  // OPTIONAL: close menu when a link is clicked (nice UX)
+  // close menu when a link is clicked
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       if (navLinks.classList.contains('open')) {

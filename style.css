@@ -235,6 +235,7 @@ nav.hide {
     color: inherit;
     font-size: 1.4rem;
 }
+
 /* hamburger menu (hidden on desktop) */
 .nav-toggle {
     display: none;
@@ -363,10 +364,53 @@ hr {
     gap: 16px;
 }
 
+.bs-image-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+}
+
 .bs-img {
     width: 100%;
     height: 400px;
     border-radius: 8px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.bs-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 16px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.bs-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+/* hover effect */
+.bs-card:hover .bs-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.bs-card:hover .bs-img {
+    transform: scale(1.03);
 }
 
 /* order now button */
@@ -374,9 +418,13 @@ hr {
     padding: 8px 32px;
     border-radius: 999px;
     border: 1px solid #000;
-    background: #fff;
+    background: white;
     font-size: 0.9rem;
     cursor: pointer;
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    text-align: center;
 }
 
 .pill-btn:hover {
@@ -769,15 +817,14 @@ hr {
 
 .product-link {
     text-decoration: none;
-    color: inherit;          /* inherit black text */
-    display: block;          /* makes full card clickable */
+    color: inherit;        
+    display: block;         
 }
 
 .product-link p {
     text-decoration: none;
     color: inherit;
 }
-
 
 /* BYO SET SECTION */
 .byo-section {
@@ -1231,7 +1278,6 @@ hr {
   gap: 24px;
 }
 
-/* shared elements */
 .checkout-heading {
   font-size: 1.1rem;
   font-weight: 600;
@@ -1332,7 +1378,7 @@ hr {
   font-weight: 600;
 }
 
-/* Pay button */
+/* pay button */
 .checkout-pay-btn {
   margin-top: 6px;
   width: 100%;
@@ -1413,7 +1459,7 @@ hr {
   font-size: 0.9rem;
 }
 
-/* Discount row */
+/* discount row */
 .summary-discount-row {
   margin-top: 10px;
   display: grid;
@@ -1430,7 +1476,6 @@ hr {
   cursor: pointer;
 }
 
-/* Totals */
 .summary-totals {
   margin-top: 12px;
   display: flex;
@@ -1626,7 +1671,7 @@ hr {
     flex: 1;   
 }
 
-/* FIELDS */
+/* fields */
 .field input,
 .field select,
 .field textarea {
@@ -1725,7 +1770,7 @@ hr {
     transition: max-height 0.3s ease;
     font-size: 0.9rem;
     line-height: 1.6;
-    padding-left: 32px;   /* so text lines up with label */
+    padding-left: 32px;
     padding-right: 10px;
 }
 
@@ -1962,6 +2007,7 @@ hr {
         line-height: 1.2;
         font-weight: 600;
     }
+    
     /* BEST SELLERS MOBILE LAYOUT */
     .best-sellers {
         padding: 24px 16px 32px;
