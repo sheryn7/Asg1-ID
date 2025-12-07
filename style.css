@@ -1452,6 +1452,390 @@ hr {
   font-weight: 600;
 }
 
+/* BULK ORDER SECTION */
+.bulk-banner {
+    background: #ffffff;
+    padding: 90px 30px;
+    text-align: center;
+}
+
+.bulk-banner-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.bulk-banner-subtitle {
+    font-size: 1rem;
+    color: #555555;
+}
+
+.customisation-section,
+.live-event-section {
+    background: #CCDDFF;           
+    padding: 80px 35px 95px;
+    margin-bottom: 80px;
+}
+
+.customisation-inner,
+.live-event-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 120px;
+}
+
+.customisation-copy,
+.live-event-copy {
+    flex: 1;
+}
+
+.customisation-title {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+.customisation-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.customisation-body {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.customisation-gallery,
+.live-event-gallery {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    gap: 32px;
+}
+
+.customisation-card {
+    width: 350px;
+    height: 350px;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.04);
+}
+
+.customisation-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.clients-section {
+    background: #ffffff;
+    padding: 30px 35px 90px;
+}
+
+.clients-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.clients-heading {
+    font-size: 1rem;
+    margin-bottom: 32px;
+}
+
+.clients-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px 40px; 
+}
+
+.client-logo {
+    width: 90px;
+    height: 90px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.client-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* READY TO ORDER FORM SECTION */
+.bulk-form-section {
+    background: #ffffff;
+    padding: 80px 20px 100px;
+}
+
+.bulk-form-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.bulk-form-title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.bulk-form-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.bulk-form-note {
+    font-size: 0.9rem;
+    color: #555555;
+    line-height: 1.5;
+}
+
+.bulk-form-card {
+    max-width: 650px;
+    margin: 0 auto;
+    background: #CCDDFF;
+    border-radius: 18px;
+    border: 1px solid black;
+    padding: 30px 35px 35px;
+}
+
+.bulk-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bulk-form-row {
+    width: 100%;
+}
+
+.bulk-form-row.two-col {
+    display: flex;
+    gap: 12px;
+}
+.bulk-form-row.two-col .field {
+    flex: 1;   
+}
+
+/* FIELDS */
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #cccccc;
+    font-size: 0.9rem;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.field textarea {
+    resize: vertical;
+}
+
+.bulk-form-submit {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: #333333;
+    color: #ffffff;
+}
+
+.bulk-form-submit:hover {
+    opacity: 0.9;
+}
+
+/* FAQ SECTION */
+.faq-section {
+    background: #ffffff;
+    padding: 80px 20px 50px;
+}
+
+.faq-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #CCDDFF;
+    border-radius: 20px;
+    border: 1px solid black;
+    padding: 40px 50px 50px;
+}
+
+.faq-title {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+}
+
+.faq-list {
+    border-top: 1px solid #ffffff;
+}
+
+.faq-item {
+    border-bottom: 1px solid #ffffff;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 14px 0;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.faq-icon {
+    width: 16px;
+    height: 16px;
+    background: #fffff1;
+    margin-right: 16px;
+    flex-shrink: 0;
+}
+
+.faq-label {
+    flex: 1;
+    text-align: left;
+}
+
+.faq-arrow {
+    margin-left: 16px;
+    font-size: 0.9rem;
+}
+
+/* answer panel (collapsed by default) */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    padding-left: 32px;   /* so text lines up with label */
+    padding-right: 10px;
+}
+
+/* extra padding only when open */
+.faq-item.open .faq-answer {
+    padding-top: 0;
+    padding-bottom: 14px;
+}
+
+.faq-answer h3 {
+    font-size: 0.95rem;
+    margin: 10px 0 4px;
+}
+
+.faq-item.open .faq-arrow {
+    transform: rotate(180deg);
+}
+
+/* CONTACT SECTION */
+.contact-section {
+    background: #CCDDFF;
+    padding: 80px 20px 100px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contact-title {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.contact-subtitle {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.contact-details {
+    margin-bottom: 40px;
+}
+
+.contact-block {
+    margin-bottom: 20px;
+}
+
+.contact-label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.contact-info {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.contact-form-card {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contact-row {
+    width: 100%;
+}
+
+.contact-row.two-col {
+    display: flex;
+    gap: 18px;
+}
+
+.contact-row input,
+.contact-row textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 30px;
+    border: 1px solid #555;
+    background: transparent;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.contact-row textarea {
+    height: 150px;
+    border-radius: 20px;
+    resize: vertical;
+}
+
+.contact-submit {
+    background: #3b2600;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    margin: 15px auto 0;
+    font-size: 0.95rem;
+    cursor: pointer;
+    width: 140px;
+}
+
+.contact-submit:hover {
+    opacity: 0.9;
+}
+
+
 @media (max-width: 768px) {
     nav {
         padding: 14px 16px;
@@ -1884,5 +2268,59 @@ hr {
 
     .discount-apply-btn {
         width: 100%;
+    }
+
+    /* BULK ORDER MOBILE LAYOUT */
+    .customisation-inner,
+    .live-event-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+    }
+
+    .customisation-gallery,
+    .live-event-gallery {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .customisation-card {
+        width: 48%;
+        height: 200px;
+    }
+
+    .clients-section {
+        padding: 50px 20px 70px;
+    }
+
+    .client-logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .bulk-form-card {
+        padding: 25px 20px 30px;
+    }
+
+    .bulk-form-row.two-col {
+        flex-direction: column;
+    }
+
+    /* FAQ MOBILE LAYOUT */
+    .faq-card {
+        padding: 30px 18px 22px;
+    }
+
+    .faq-answer {
+        padding-left: 28px;
+    }
+
+    /* CONTACT MOBILE LAYOUT */
+    .contact-row.two-col {
+        flex-direction: column;
+    }
+
+    .contact-title {
+        font-size: 1.9rem;
     }
 }

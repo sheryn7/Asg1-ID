@@ -465,5 +465,39 @@ if (document.querySelector('.checkout-page')) {
     });
   }
 }
-
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach((item) => {
+        const button = item.querySelector(".faq-question");
+        const answer = item.querySelector(".faq-answer");
+        const arrow  = item.querySelector(".faq-arrow");
+
+        button.addEventListener("click", () => {
+            const isOpen = item.classList.contains("open");
+
+            // (optional) close all others first – true accordion
+            faqItems.forEach((other) => {
+                if (other !== item) {
+                    other.classList.remove("open");
+                    const otherAnswer = other.querySelector(".faq-answer");
+                    const otherArrow  = other.querySelector(".faq-arrow");
+                    otherAnswer.style.maxHeight = null;
+                    if (otherArrow) otherArrow.textContent = "▾";
+                }
+            });
+
+            if (isOpen) {
+                item.classList.remove("open");
+                answer.style.maxHeight = null;
+                arrow.textContent = "▾";
+            } else {
+                item.classList.add("open");
+                answer.style.maxHeight = answer.scrollHeight + "px";
+                arrow.textContent = "▴";
+            }
+        });
+    });
+});
